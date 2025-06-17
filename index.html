@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWell - Mental Health & Wellness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🧠</span>
+                <h2>MindWell</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#tracker" class="nav-link">Mood Tracker</a></li>
+                <li><a href="#goals" class="nav-link">Wellness Goals</a></li>
+                <li><a href="#journal" class="nav-link">Journal</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#contact" class="nav-link">Get Help</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Mental Health <span class="highlight">Matters</span></h1>
+                <p class="hero-subtitle">Track your mood, set wellness goals, and access professional mental health resources. Take control of your mental wellbeing with our comprehensive self-care platform.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="25000">0</span>
+                        <span class="stat-label">Users Helped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="150">0</span>
+                        <span class="stat-label">Mental Health Professionals</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="98">0</span>
+                        <span class="stat-label">% User Satisfaction</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('tracker')">Start Tracking</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('contact')">Get Support</button>
+                </div>
+                <div class="emergency-notice">
+                    <span class="emergency-icon">⚠️</span>
+                    <p>If you're in crisis, call <strong>988</strong> (Suicide & Crisis Lifeline) or <strong>911</strong></p>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="wellness-dashboard">
+                    <div class="dashboard-header">
+                        <h3>Today's Wellness</h3>
+                        <span class="wellness-score" id="heroWellnessScore">7.2/10</span>
+                    </div>
+                    <div class="mood-preview">
+                        <div class="mood-chart">
+                            <div class="mood-bar" style="height: 60%"></div>
+                            <div class="mood-bar" style="height: 80%"></div>
+                            <div class="mood-bar" style="height: 45%"></div>
+                            <div class="mood-bar" style="height: 90%"></div>
+                            <div class="mood-bar" style="height: 72%"></div>
+                        </div>
+                        <div class="mood-info">
+                            <p class="current-mood">Feeling: <span>Optimistic</span></p>
+                            <p class="streak">7-day streak 🔥</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood Tracker Section -->
+    <section id="tracker" class="mood-tracker">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Daily Mood Tracker</h2>
+                <p class="section-subtitle">Monitor your emotional wellbeing and identify patterns over time</p>
+            </div>
+
+            <div class="tracker-container">
+                <div class="mood-input-section">
+                    <div class="mood-selector">
+                        <h3>How are you feeling today?</h3>
+                        <div class="mood-options">
+                            <div class="mood-option" data-mood="1" data-label="Very Low">
+                                <span class="mood-emoji">😢</span>
+                                <span class="mood-label">Very Low</span>
+                            </div>
+                            <div class="mood-option" data-mood="2" data-label="Low">
+                                <span class="mood-emoji">😔</span>
+                                <span class="mood-label">Low</span>
+                            </div>
+                            <div class="mood-option" data-mood="3" data-label="Okay">
+                                <span class="mood-emoji">😐</span>
+                                <span class="mood-label">Okay</span>
+                            </div>
+                            <div class="mood-option" data-mood="4" data-label="Good">
+                                <span class="mood-emoji">🙂</span>
+                                <span class="mood-label">Good</span>
+                            </div>
+                            <div class="mood-option" data-mood="5" data-label="Excellent">
+                                <span class="mood-emoji">😊</span>
+                                <span class="mood-label">Excellent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mood-factors">
+                        <h4>What's affecting your mood?</h4>
+                        <div class="factors-grid">
+                            <label class="factor-item">
+                                <input type="checkbox" value="work">
+                                <span class="factor-icon">💼</span>
+                                <span class="factor-label">Work</span>
+                            </label>
+                            <label class="factor-item">
+                                <input type="checkbox" value="relationships">
+                                <span class="factor-icon">❤️</span>
+                                <span class="factor-label">Relationships</span>
+                            </label>
+                            <label class="factor-item">
+                                <input type="checkbox" value="health">
+                                <span class="factor-icon">🏥</span>
+                                <span class="factor-label">Health</span>
+                            </label>
+                            <label class="factor-item">
+                                <input type="checkbox" value="finances">
+                                <span class="factor-icon">💰</span>
+                                <span class="factor-label">Finances</span>
+                            </label>
+                            <label class="factor-item">
+                                <input type="checkbox" value="sleep">
+                                <span class="factor-icon">😴</span>
+                                <span class="factor-label">Sleep</span>
+                            </label>
+                            <label class="factor-item">
+                                <input type="checkbox" value="exercise">
+                                <span class="factor-icon">🏃</span>
+                                <span class="factor-label">Exercise</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mood-notes">
+                        <label for="moodNotes">Additional Notes (Optional)</label>
+                        <textarea id="moodNotes" placeholder="How was your day? Any specific thoughts or feelings you'd like to record?"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" id="saveMoodBtn">Save Today's Mood</button>
+                </div>
+
+                <div class="mood-analytics">
+                    <div class="analytics-header">
+                        <h3>Your Mood Trends</h3>
+                        <div class="time-selector">
+                            <button class="time-btn active" data-period="7">7 Days</button>
+                            <button class="time-btn" data-period="30">30 Days</button>
+                            <button class="time-btn" data-period="90">90 Days</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mood-chart-container">
+                        <canvas id="moodChart" width="400" height="200"></canvas>
+                    </div>
+
+                    <div class="mood-insights">
+                        <div class="insight-card">
+                            <h4>Average Mood</h4>
+                            <span class="insight-value" id="avgMood">3.8/5</span>
+                        </div>
+                        <div class="insight-card">
+                            <h4>Best Day</h4>
+                            <span class="insight-value" id="bestDay">Monday</span>
+                        </div>
+                        <div class="insight-card">
+                            <h4>Tracking Streak</h4>
+                            <span class="insight-value" id="trackingStreak">12 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Goals Section -->
+    <section id="goals" class="wellness-goals">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Wellness Goals</h2>
+                <p class="section-subtitle">Set and track meaningful wellness goals to improve your mental health</p>
+            </div>
+
+            <div class="goals-container">
+                <div class="add-goal-section">
+                    <div class="goal-form">
+                        <h3>Add New Goal</h3>
+                        <div class="form-group">
+                            <label for="goalTitle">Goal Title</label>
+                            <input type="text" id="goalTitle" placeholder="e.g., Meditate for 10 minutes daily">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="goalCategory">Category</label>
+                                <select id="goalCategory">
+                                    <option value="mindfulness">Mindfulness</option>
+                                    <option value="exercise">Physical Activity</option>
+                                    <option value="sleep">Sleep</option>
+                                    <option value="social">Social Connection</option>
+                                    <option value="nutrition">Nutrition</option>
+                                    <option value="creativity">Creativity</option>
+                                    <option value="learning">Learning</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="goalTarget">Target (per week)</label>
+                                <input type="number" id="goalTarget" min="1" max="7" value="3">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="addGoalBtn">Add Goal</button>
+                    </div>
+                </div>
+
+                <div class="goals-list">
+                    <div class="goals-header">
+                        <h3>Your Goals</h3>
+                        <div class="goals-filter">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="active">Active</button>
+                            <button class="filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                    </div>
+                    <div class="goals-grid" id="goalsGrid">
+                        <!-- Goals will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section id="journal" class="journal">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Daily Journal</h2>
+                <p class="section-subtitle">Express your thoughts and reflect on your daily experiences</p>
+            </div>
+
+            <div class="journal-container">
+                <div class="journal-editor">
+                    <div class="editor-header">
+                        <h3>Today's Entry</h3>
+                        <span class="entry-date" id="currentDate"></span>
+                    </div>
+                    
+                    <div class="journal-prompts">
+                        <h4>Writing Prompts (Optional)</h4>
+                        <div class="prompts-list">
+                            <button class="prompt-btn" data-prompt="What are three things I'm grateful for today?">Gratitude</button>
+                            <button class="prompt-btn" data-prompt="What challenges did I face today and how did I handle them?">Challenges</button>
+                            <button class="prompt-btn" data-prompt="What made me smile or feel happy today?">Joy</button>
+                            <button class="prompt-btn" data-prompt="What did I learn about myself today?">Self-Discovery</button>
+                        </div>
+                    </div>
+
+                    <div class="journal-textarea-container">
+                        <textarea id="journalEntry" placeholder="Start writing about your day, your feelings, or anything on your mind..."></textarea>
+                        <div class="editor-tools">
+                            <span class="word-count" id="wordCount">0 words</span>
+                            <button class="btn btn-secondary" id="saveJournalBtn">Save Entry</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journal-history">
+                    <div class="history-header">
+                        <h3>Past Entries</h3>
+                        <div class="search-container">
+                            <input type="text" id="journalSearch" placeholder="Search entries...">
+                        </div>
+                    </div>
+                    <div class="entries-list" id="entriesList">
+                        <!-- Past entries will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Gallery Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mental Health Resources</h2>
+                <p class="section-subtitle">Curated resources to support your mental health journey</p>
+            </div>
+
+            <div class="resources-filter">
+                <button class="filter-btn active" data-category="all">All Resources</button>
+                <button class="filter-btn" data-category="articles">Articles</button>
+                <button class="filter-btn" data-category="videos">Videos</button>
+                <button class="filter-btn" data-category="podcasts">Podcasts</button>
+                <button class="filter-btn" data-category="apps">Apps</button>
+                <button class="filter-btn" data-category="hotlines">Hotlines</button>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Resources will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Professional Help</h2>
+                <p class="section-subtitle">Connect with mental health professionals and get the support you need</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="emergency-section">
+                        <h3>🚨 Emergency Support</h3>
+                        <div class="emergency-contacts">
+                            <div class="emergency-contact">
+                                <h4>Suicide & Crisis Lifeline</h4>
+                                <p class="phone-number">988</p>
+                                <p class="description">24/7 crisis support</p>
+                            </div>
+                            <div class="emergency-contact">
+                                <h4>Crisis Text Line</h4>
+                                <p class="phone-number">Text HOME to 741741</p>
+                                <p class="description">24/7 text support</p>
+                            </div>
+                            <div class="emergency-contact">
+                                <h4>Emergency Services</h4>
+                                <p class="phone-number">911</p>
+                                <p class="description">Immediate emergency</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="professional-help">
+                        <h3>Professional Services</h3>
+                        <div class="services-list">
+                            <div class="service-item">
+                                <span class="service-icon">👩‍⚕️</span>
+                                <div class="service-info">
+                                    <h4>Licensed Therapists</h4>
+                                    <p>Individual counseling sessions</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">👥</span>
+                                <div class="service-info">
+                                    <h4>Group Therapy</h4>
+                                    <p>Peer support groups</p>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">💊</span>
+                                <div class="service-info">
+                                    <h4>Psychiatric Care</h4>
+                                    <p>Medication management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <form id="contactForm" class="contact-form">
+                        <h3>Request Professional Support</h3>
+                        
+                        <div class="form-step active" data-step="1">
+                            <h4>Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                    <span class="error-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                    <span class="error-message"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Age Range</label>
+                                <select id="age" name="age">
+                                    <option value="">Select age range</option>
+                                    <option value="18-25">18-25</option>
+                                    <option value="26-35">26-35</option>
+                                    <option value="36-45">36-45</option>
+                                    <option value="46-55">46-55</option>
+                                    <option value="56-65">56-65</option>
+                                    <option value="65+">65+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="2">
+                            <h4>Support Needs</h4>
+                            <div class="form-group">
+                                <label for="supportType">Type of Support Needed *</label>
+                                <select id="supportType" name="supportType" required>
+                                    <option value="">Select support type</option>
+                                    <option value="individual-therapy">Individual Therapy</option>
+                                    <option value="group-therapy">Group Therapy</option>
+                                    <option value="psychiatric-consultation">Psychiatric Consultation</option>
+                                    <option value="crisis-intervention">Crisis Intervention</option>
+                                    <option value="general-consultation">General Consultation</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Primary Concerns (Select all that apply)</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="anxiety">
+                                        <span>Anxiety</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="depression">
+                                        <span>Depression</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="stress">
+                                        <span>Stress Management</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="relationships">
+                                        <span>Relationship Issues</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="trauma">
+                                        <span>Trauma/PTSD</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="concerns" value="addiction">
+                                        <span>Addiction</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="urgency">Urgency Level *</label>
+                                <select id="urgency" name="urgency" required>
+                                    <option value="">Select urgency</option>
+                                    <option value="low">Low - General support needed</option>
+                                    <option value="medium">Medium - Would like help within 2 weeks</option>
+                                    <option value="high">High - Need help within a few days</option>
+                                    <option value="crisis">Crisis - Need immediate help</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="3">
+                            <h4>Additional Information</h4>
+                            <div class="form-group">
+                                <label for="insurance">Insurance Provider (if applicable)</label>
+                                <input type="text" id="insurance" name="insurance" placeholder="e.g., Blue Cross, Aetna, etc.">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferredTime">Preferred Contact Time</label>
+                                <select id="preferredTime" name="preferredTime">
+                                    <option value="">No preference</option>
+                                    <option value="morning">Morning (9 AM - 12 PM)</option>
+                                    <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                                    <option value="evening">Evening (5 PM - 8 PM)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="additionalInfo">Additional Information</label>
+                                <textarea id="additionalInfo" name="additionalInfo" placeholder="Please share any additional information about your situation that might help us provide better support..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-item consent-checkbox">
+                                    <input type="checkbox" id="consent" name="consent" required>
+                                    <span>I consent to being contacted by a mental health professional and understand that this form is not for emergency situations *</span>
+                                </label>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">Submit Request</button>
+                        </div>
+
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33.33%"></div>
+                            </div>
+                            <span class="progress-text">Step 1 of 3</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🧠</span>
+                        <h3>MindWell</h3>
+                    </div>
+                    <p>Supporting your mental health journey with compassionate, professional care and innovative tracking tools.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tracker">Mood Tracker</a></li>
+                        <li><a href="#goals">Wellness Goals</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Emergency Support</h4>
+                    <ul>
+                        <li>Crisis Lifeline: <strong>988</strong></li>
+                        <li>Crisis Text: <strong>741741</strong></li>
+                        <li>Emergency: <strong>911</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Professional Help</h4>
+                    <ul>
+                        <li><a href="#contact">Find a Therapist</a></li>
+                        <li><a href="#contact">Group Therapy</a></li>
+                        <li><a href="#contact">Psychiatric Care</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MindWell. | Pardhu Krishna | All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p class="disclaimer">This platform is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
